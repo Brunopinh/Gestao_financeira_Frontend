@@ -7,6 +7,8 @@ export default function RegisterPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
+    birthDate: '',
     password: ''
   });
 
@@ -20,7 +22,7 @@ export default function RegisterPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.password) {
+    if (!formData.name || !formData.email || !formData.phone || !formData.birthDate || !formData.password) {
       alert('Por favor, preencha todos os campos');
       return;
     }
@@ -63,6 +65,31 @@ export default function RegisterPage() {
               onChange={handleInputChange}
               placeholder="Digite seu e-mail"
             />
+          </div>
+
+          <div className="input-row">
+            <div className="input-group">
+              <label htmlFor="phone">Telefone</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Digite seu telefone"
+              />
+            </div>
+
+            <div className="input-group">
+              <label htmlFor="birthDate">Data de Nascimento</label>
+              <input
+                type="date"
+                id="birthDate"
+                name="birthDate"
+                value={formData.birthDate}
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
 
           <div className="input-group">
