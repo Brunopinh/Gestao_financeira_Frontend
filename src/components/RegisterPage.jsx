@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImage from '../assets/imagens/gestao_.png';
-import './RegisterPage.css';
+import '../styles/RegisterPage.css'; // Certifique-se de que o caminho está correto
+import { register } from '../services/api'; // Importa a função de registro do serviço API
+import { useNavigate } from 'react-router-dom';
+
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -13,6 +16,9 @@ export default function RegisterPage() {
     password: ''
   });
 
+  const navigate = useNavigate(); // Para redirecionar após login
+
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -21,11 +27,31 @@ export default function RegisterPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { name, email, username, phone, birthDate, password } = formData;
+    console.log('Tentando cadastrar usuário:', { name, email, username, phone, birthDate, password });
+
     if (!formData.name || !formData.email || !formData.username || !formData.phone || !formData.birthDate || !formData.password) {
       alert('Por favor, preencha todos os campos');
       return;
+    }
+
+    try {
+      const userPayload = {
+        nome: name,
+        email: email,
+        telefone: phone,
+        login: username,
+        senha: password,
+        dt_nascimento: birthDate
+      }; // usa formData como argumento{
+
+      const userData = await register(userPayload);
+      navigate('/');
+    } catch (error) {
+      alert('Erro ao cadastrar usuário. Por favor, tente novamente.');
     }
     console.log('Form submitted:', formData);
   };

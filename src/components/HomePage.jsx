@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import './HomePage.css';
+import '../styles/HomePage.css'; // Certifique-se de que o caminho está correto
 import objetivoIcon from '../assets/imagens/objetivo.png';
 import logo from '../assets/imagens/gestao_.png';
 import perfil from '../assets/imagens/perfil.png';

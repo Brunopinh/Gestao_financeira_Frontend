@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logoImage from '../assets/imagens/gestao_.png';
-import './LoginPage.css';
+import '../styles/LoginPage.css'; // Certifique-se de que o caminho está correto
+import { login } from '../services/api'; // Importa a função de login do serviço API
+import { useNavigate } from 'react-router-dom';
+
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
@@ -9,6 +12,8 @@ export default function LoginPage() {
     password: '',
     rememberMe: false
   });
+
+  const navigate = useNavigate(); // Para redirecionar após login
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -18,14 +23,28 @@ export default function LoginPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.username || !formData.password) {
+    const { username, password } = formData;
+
+    console.log('Tentando fazer login com:', { login: username, senha: password });
+
+    if (!username || !password) {
       alert('Por favor, preencha todos os campos');
       return;
     }
-    console.log('Form submitted:', formData);
+
+    try {
+      const userData = await login(username, password); // usa username e password como args
+      console.log('Login realizado:', userData);
+
+      localStorage.setItem('token', userData.token);
+      navigate('/home');
+    } catch (error) {
+      alert('Usuário ou senha inválidos');
+    }
   };
+
 
   return (
     <div className="login-container">
@@ -75,7 +94,9 @@ export default function LoginPage() {
             <a href="#" className="forgot-password">Esqueci minha senha</a>
           </div>
 
-          <button type="submit">Entrar</button>
+          <button type="submit"
+            onClick={handleSubmit}
+          >Entrar</button>
 
           <div className="signup-text">
             <p>Não tem uma conta? <Link to="/register">Cadastre-se</Link></p>
