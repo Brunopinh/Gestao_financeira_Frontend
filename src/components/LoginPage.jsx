@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logoImage from '../assets/imagens/gestao_.png';
 import '../styles/LoginPage.css'; // Certifique-se de que o caminho está correto
 import { login } from '../services/api'; // Importa a função de login do serviço API
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';// navega para home após o login 
 
 
 export default function LoginPage() {
@@ -15,9 +15,9 @@ export default function LoginPage() {
 
   const navigate = useNavigate(); // Para redirecionar após login
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e) => {  
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData(prev => ({  
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
@@ -35,13 +35,14 @@ export default function LoginPage() {
     }
 
     try {
-      const userData = await login(username, password); // usa username e password como args
-      console.log('Login realizado:', userData);
+      const userData = await login(username, password);  // chama a função login 
+      console.log('Login realizado:', userData); // loga os dados do usuario no console
 
-      localStorage.setItem('token', userData.token);
+      localStorage.setItem('token', userData.token); // Armazena o token que o back retorna
+      localStorage.setItem('id_usuario', userData.id);
       navigate('/home');
     } catch (error) {
-      alert('Usuário ou senha inválidos');
+      alert('Usuário ou senha inválidos'); 
     }
   };
 

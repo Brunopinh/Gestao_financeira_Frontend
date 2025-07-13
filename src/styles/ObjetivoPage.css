@@ -1,0 +1,189 @@
+.d-flex {
+  display: flex;
+}
+/* Sidebar com layout azul */
+.sidebar {
+  background-color: #1a237e; /* Azul padrão */
+  min-width: 250px;
+  height: 100vh;
+  color: white;
+  padding: 20px 0;
+}
+
+.sidebar .logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar .logo-container img {
+  margin-bottom: 10px;
+}
+
+.sidebar ul.nav {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul.nav li.nav-item {
+  margin: 10px 0;
+}
+
+.sidebar ul.nav li.nav-item .nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  display: block;
+  transition: background 0.3s;
+}
+
+.sidebar ul.nav li.nav-item .nav-link:hover {
+  background-color: #0056b3; /* Azul mais escuro no hover */
+}
+
+/* Conteúdo principal com fundo azul claro */
+.content-container {
+  position: relative; /* garante que o posicionamento absoluto funcione */
+  flex-grow: 1;
+  background-color: #e7f1ff;  /* Azul claro */
+  padding: 30px;
+}
+
+.btn-novoObjetivo {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background-color: #04AA6D; /* Green */
+  width: 150px;
+  height: 40px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px; /* aumentado de 12px para 18px */
+}
+
+.lista-objetivos-centralizada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.objetivos-quadro-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.objetivo-quadro {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.12), 0 1.5px 6px rgba(0,0,0,0.08);
+  padding: 18px 32px;
+  min-width: 340px;
+  max-width: 420px;
+  width: 100%;
+  min-height: 60px;
+  max-height: 110px;
+  margin: 0 auto;
+  text-align: left;
+  color: #2d3a4b;
+  font-size: 1.08rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.objetivo-quadro strong {
+  font-size: 1.12rem;
+  color: #2563eb;
+}
+
+.tabela-objetivos-centralizada {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.tabela-objetivos {
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.12), 0 1.5px 6px rgba(0,0,0,0.08);
+  overflow: hidden;
+  min-width: 600px;
+  max-width: 900px;
+}
+
+.tabela-objetivos th, .tabela-objetivos td {
+  padding: 14px 18px;
+  text-align: center;
+}
+
+.tabela-objetivos th {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.tabela-objetivos tr:nth-child(even) {
+  background: #f4f6fa;
+}
+
+.tabela-objetivos tr:nth-child(odd) {
+  background: #fff;
+}
+
+.tabela-objetivos td {
+  color: #2d3a4b;
+  font-size: 1rem;
+}
+
+.acao-btn {
+  background: #e5e7eb;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: #374151;
+  cursor: not-allowed;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.acao-btn img {
+  vertical-align: middle;
+}
+
+/* Estilo para o modal de edição */
+.editar-modal-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.logo {
+  width: 60px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-acao {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}

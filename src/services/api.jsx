@@ -32,3 +32,13 @@ export const register = async (userData) => {
     throw error; // Propaga o erro para ser tratado pelo componente
   }
 };
+
+export const objective = async () => {
+  try {
+    const response = await api.get('/api/v1/objective/');
+    return response.data; // Retorna a lista de objetivos
+  } catch (error) {
+    console.error('Erro ao buscar objetivos:', error);
+    throw error; // Propaga o erro para ser tratado pelo componente
+  }
+}

@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
 import HomePage from './components/HomePage';
+import ObjetivoPage from './components/ObjetivoPage';
+import NovoObjetivoPage from './components/NovoObjetivoPage'; 
 
 function App() {
   return (
@@ -11,7 +13,8 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
-        <Route path="/objetivos" element={<h1>Página de Objetivos</h1>} />
+        <Route path="/objetivos" element={<ObjetivoPage />} />
+         <Route path="/objetivos/novo" element={<NovoObjetivoPage />} /> 
       </Routes>
     </BrowserRouter>
   );

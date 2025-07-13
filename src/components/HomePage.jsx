@@ -1,13 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/HomePage.css'; // Certifique-se de que o caminho está correto
+import '../styles/HomePage.css'; 
 import objetivoIcon from '../assets/imagens/objetivo.png';
 import logo from '../assets/imagens/gestao_.png';
 import perfil from '../assets/imagens/perfil.png';
 
-const HomePage = ({ username = 'Usuário' }) => {
+const HomePage = () => {
   const navigate = useNavigate();
-  
+
+  // Pegue o nome do usuário do localStorage (ajuste a chave conforme seu backend)
+  const username = localStorage.getItem('username') || 'Usuário';
+
   const handleObjetivosClick = () => {
     try {
       navigate('/objetivos');
