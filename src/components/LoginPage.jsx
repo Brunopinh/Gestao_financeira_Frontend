@@ -40,6 +40,7 @@ export default function LoginPage() {
 
       localStorage.setItem('token', userData.token); // Armazena o token que o back retorna
       localStorage.setItem('id_usuario', userData.id);
+      localStorage.setItem('username', userData.nome);
       navigate('/home');
     } catch (error) {
       alert('Usuário ou senha inválidos'); 

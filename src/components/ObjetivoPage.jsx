@@ -112,8 +112,9 @@ const ObjetivoPage = () => {
     };
 
     const handleSalvarEdicao = async (dadosAtualizados) => {
-        const token = localStorage.getItem('token');
-        if (!token) {
+        const idUsuario = localStorage.getItem('id_usuario'); // pega do localStorage
+
+        if (!idUsuario) {
             alert('Você precisa estar logado para editar');
             navigate('/login');
             return;
@@ -124,16 +125,14 @@ const ObjetivoPage = () => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
+                    'X-User-Id': idUsuario, // envia o id do usuário no header
                 },
                 body: JSON.stringify(dadosAtualizados),
             });
 
             if (response.ok) {
                 setObjetivos(objetivos.map((obj) =>
-                    obj.id === editandoObj.id
-                        ? { ...obj, ...dadosAtualizados }
-                        : obj
+                    obj.id === editandoObj.id ? { ...obj, ...dadosAtualizados } : obj
                 ));
                 setEditandoObj(null);
             } else {
@@ -142,6 +141,30 @@ const ObjetivoPage = () => {
         } catch (error) {
             alert('Erro ao editar objetivo');
             console.error(error);
+        }
+    };
+
+    const handleExcluirObjetivo = async (id) => {
+        const confirmar = window.confirm('Tem certeza que deseja excluir este objetivo?');
+        if (!confirmar) return;
+
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch(`http://localhost:8000/objetivos/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                setObjetivos(objetivos.filter(obj => obj.id !== id));
+            } else {
+                alert('Erro ao excluir objetivo.');
+            }
+        } catch (error) {
+            console.error("Erro na requisição:", error);
+            alert('Erro na exclusão do objetivo.');
         }
     };
 
@@ -202,14 +225,14 @@ const ObjetivoPage = () => {
                                                 style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
                                             >
                                                 <img src={editarIcon} alt="Editar" style={{ width: 22, height: 20 }} />
-                                
+
                                             </button>
-                                             <button
+                                            <button
                                                 className="acao-btn"
                                                 onClick={() => handleExcluirObjetivo(obj.id)}
-                                                 style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-  >
-                                                 <img src={excluirIcon} alt="Excluir" style={{ width: 20, height: 20 }} />
+                                                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                                            >
+                                                <img src={excluirIcon} alt="Excluir" style={{ width: 20, height: 20 }} />
                                             </button>
                                         </td>
                                     </tr>
@@ -224,39 +247,15 @@ const ObjetivoPage = () => {
                         objetivo={editandoObj}
                         onClose={() => setEditandoObj(null)}
                         onSave={handleSalvarEdicao}
-                        
-                    
+
+
                     />
                 )}
-                
+
             </div>
         </div>
     );
 };
-   const handleExcluirObjetivo = async (id) => {
-  const confirmar = window.confirm('Tem certeza que deseja excluir este objetivo?');
-  if (!confirmar) return;
 
-  try {
-    const token = localStorage.getItem('token');
-    const response = await fetch(`http://localhost:8000/objetivos/${id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
 
-    const data = await response.json().catch(() => ({})); // <- evita erro se a resposta estiver vazia
-
-    if (response.ok) {
-      setObjetivos(objetivos.filter(obj => obj.id !== id));
-    } else {
-      console.error("Erro ao excluir:", data);
-      alert('Erro ao excluir objetivo.');
-    }
-  } catch (error) {
-    console.error("Erro na requisição:", error);
-    alert('Erro na exclusão do objetivo.');
-  }
-};
 export default ObjetivoPage;

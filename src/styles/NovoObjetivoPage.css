@@ -51,6 +51,7 @@ input, textarea {
   padding: 8px;
   font-size: 1rem;
   margin-bottom: 8px;
+  color: black;
   background: #f9fafb;
   resize: none;
 }
