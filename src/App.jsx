@@ -5,6 +5,10 @@ import RegisterPage from './components/RegisterPage';
 import HomePage from './components/HomePage';
 import ObjetivoPage from './components/ObjetivoPage';
 import NovoObjetivoPage from './components/NovoObjetivoPage'; 
+import CategoriaPage from './components/CategoriaPage';
+import NovaCategoriaPage from './components/NovaCategoriaPage';
+
+
 
 function App() {
   return (
@@ -15,6 +19,8 @@ function App() {
         <Route path="/home" element={<HomePage />} />
         <Route path="/objetivos" element={<ObjetivoPage />} />
          <Route path="/objetivos/novo" element={<NovoObjetivoPage />} /> 
+        <Route path="/categorias" element={<CategoriaPage />} />
+          <Route path="/categorias/nova" element={<NovaCategoriaPage />} />
       </Routes>
     </BrowserRouter>
   );

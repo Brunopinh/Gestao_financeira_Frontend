@@ -1,0 +1,82 @@
+/* Estilo do formulário */
+.form-container.quadro {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 50, 0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 20px;
+}
+
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #90caf9;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.form-container select {
+  background-color: #f0f8ff;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.salvar-btn {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.salvar-btn:hover {
+  background-color: #0d47a1;
+}
+
+.cancelar-btn {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.cancelar-btn:hover {
+  background-color: #bdbdbd;
+}
+
+/* Alinhar a tela ao layout geral */
+.content-container {
+  flex: 1;
+  padding: 40px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}

@@ -1,0 +1,81 @@
+.content-container {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: #f0f4f8;
+  min-height: 100vh;
+}
+
+.btn-novoObjetivo {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.btn-novoObjetivo:hover {
+  background-color: #0056b3;
+}
+
+.tabela-objetivos {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tabela-objetivos th,
+.tabela-objetivos td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.tabela-objetivos th {
+  background-color: #007bff;
+  color: white;
+}
+
+.acao-btn img {
+  cursor: pointer;
+}
+
+.editar-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container.quadro {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.salvar-btn, .cancelar-btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.salvar-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.cancelar-btn {
+  background-color: #dc3545;
+  color: white;
+}
